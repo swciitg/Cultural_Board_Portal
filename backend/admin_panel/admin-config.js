@@ -13,7 +13,7 @@ import { initiativesResourceOptions } from "./initiativesResource.js";
 import { announcementResourceOptions } from "./announcementResource.js";
 dotenv.config();
 
-const API_BASE = process.env.NODE_ENV === 'development' ?  (process.env.API_BASE || '') : '/cultural-board/api';
+const API_BASE = process.env.NODE_ENV === 'development' ?  (process.env.API_BASE || '') : '/sports-board/api';
 const ADMINPANELROOT = `${API_BASE}/admin`;
 
 const DEFAULT_ADMIN = {
@@ -69,7 +69,7 @@ const adminOptions = {
 
 const admin = new AdminJS(adminOptions);
 
-const adminRouter = AdminJSExpress.buildAuthenticatedRouter(admin, 
+const adminRouter = AdminJSExpress.buildAuthenticatedRouter(admin,
   {
     authenticate,
     cookieName: process.env.COOKIE_NAME || 'adminjs',
@@ -93,4 +93,3 @@ try {
 }
 
 export { admin, adminRouter };
-

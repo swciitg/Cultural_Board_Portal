@@ -13,7 +13,8 @@ import authRoutes from "./routes/auth.routes.js";
 // Initialize dotenv to load environment variables
 dotenv.config();
 
-const ADMINPANELROOT = "/admin";
+const API_BASE = process.env.NODE_ENV === 'development' ?  (process.env.API_BASE || '') : '/sports-board/api';
+const ADMINPANELROOT = `${API_BASE}/admin`;
 const PORT = process.env.PORT || 8000;
 const url = process.env.MONGO_URI;
 console.log(url);
