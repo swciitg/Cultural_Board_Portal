@@ -15,6 +15,9 @@ COPY . .
 
 # Create production build of React App
 RUN npm run build
+
+EXPOSE 3000
+CMD ["serve", "-s", "build", "-l", "3000"]
 # RUN mkdir -p ./build/election_portal
 # RUN mv ./build/static ./build/election_portal/static
 # RUN mv ./build/manifest.json ./build/election_portal/manifest.json

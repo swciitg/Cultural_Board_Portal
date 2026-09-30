@@ -14,8 +14,12 @@ export const uploadFile = (req, res) => {
 };
 
 export const deleteFile = (req, res) => {
-  const filename = req.params.filename;
-  const filePath = path.join('uploads', filename);
+  const filename = path.basename(req.params.filename || '');
+  const uploadsDir = path.resolve('uploads');
+  const filePath = path.join(uploadsDir, filename);
+  if (!filePath.startsWith(uploadsDir)) {
+    return res.status(400).send('Invalid filename.');
+  }
   if (fs.existsSync(filePath)) {
     fs.unlinkSync(filePath);
   }

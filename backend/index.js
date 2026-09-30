@@ -17,7 +17,9 @@ const API_BASE = process.env.NODE_ENV === 'development' ?  (process.env.API_BASE
 const ADMINPANELROOT = `${API_BASE}/admin`;
 const PORT = process.env.PORT || 8000;
 const url = process.env.MONGO_URI;
-console.log(url);
+if (!url) {
+  throw new Error('MONGO_URI must be set in environment variables');
+}
 
 // Connect to MongoDB
 mongoose.connect(url);
@@ -38,7 +40,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'uploads')));
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
-  secret: 'supersecretkey',
+  secret: process.env.SESSION_SECRET || process.env.COOKIE_PASSWORD || 'supersecretkey',
   resave: false,
   saveUninitialized: false
 }));
