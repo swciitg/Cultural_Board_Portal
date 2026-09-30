@@ -14,6 +14,8 @@ RUN npm install
 COPY . .
 
 # Create production build of React App
+ARG REACT_APP_API_BASE_URL=http://localhost:3001
+ENV REACT_APP_API_BASE_URL=$REACT_APP_API_BASE_URL
 RUN npm run build
 
 EXPOSE 3000
