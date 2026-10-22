@@ -25,7 +25,7 @@ const Ticker = () => {
       <div className="flex animate-ticker py-2.2 md:py-1.9 whitespace-nowrap">
           {latestAnnouncements.map((announcement) => (
             <div className="px-4" key={announcement._id}>
-              <Link to={`/announcements/${announcement._id}`} className="hover:underline">
+              <Link to="/announcements" className="hover:underline">
                 {announcement.title}
               </Link>
             </div>

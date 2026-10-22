@@ -1,5 +1,9 @@
 import bcrypt from 'bcrypt';
 
+if (!process.env.ADMIN_EMAIL || !process.env.ADMIN_PASSWORD) {
+  throw new Error('Admin email and password must be set in environment variables');
+}
+
 const user = {
   username: process.env.ADMIN_EMAIL,
   passwordHash: bcrypt.hashSync(process.env.ADMIN_PASSWORD, 10)

@@ -7,27 +7,24 @@ import ZigZagLine from "./ZigZagLine";
 function AllClubsHeroSection() {
 
   const [clubsData, setClubsData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [heroimg, setheroimg] = useState();
 
    useEffect(() => {
-    console.log(process.env.REACT_APP_API_BASE_URL)
-    axios
-      .get(`${process.env.REACT_APP_API_BASE_URL}/allclubs`)
-      .then((response) => {
-        setClubsData(response.data.club);
-        setheroimg(response.data.homepage[0].clubheroimg)
-        setLoading(false);
-        console.log(response.data.club);
-      })
-      .catch((error) => {
-        console.error("Error fetching clubs data:", error);
-        setError("Failed to load clubs.");
-        setLoading(false);
-      });
-      console.log(clubsData);
-  }, []); 
+     axios
+       .get(`${process.env.REACT_APP_API_BASE_URL}/allclubs`)
+       .then((response) => {
+         setClubsData(response.data.club || []);
+         setheroimg(response.data.homepage?.[0]?.clubheroimg || '');
+         setLoading(false);
+       })
+       .catch((error) => {
+         console.error("Error fetching clubs data:", error);
+         setError("Failed to load clubs.");
+         setLoading(false);
+       });
+   }, []); 
   return (
     <div className="overflow-x-hidden font-poppins bg-[#F5F5F5]">
       <div

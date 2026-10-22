@@ -14,10 +14,25 @@ export const uploadFile = (req, res) => {
 };
 
 export const deleteFile = (req, res) => {
-  const filename = req.params.filename;
-  const filePath = path.join('uploads', filename);
-  if (fs.existsSync(filePath)) {
-    fs.unlinkSync(filePath);
+  const raw = req.params.filename || '';
+  const filename = path.basename(raw);
+  if (!filename || filename === '.' || filename === '..') {
+    return res.status(400).send('Invalid filename.');
+  }
+  const uploadsDir = path.resolve('uploads');
+  const filePath = path.join(uploadsDir, filename);
+  if (filePath !== path.join(uploadsDir, filename) || !filePath.startsWith(uploadsDir)) {
+    return res.status(400).send('Invalid filename.');
+  }
+  try {
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+      fs.unlinkSync(filePath);
+    }
+  } catch (err) {
+    return res.status(400).send('Invalid filename.');
+  }
+  if (req.method === 'DELETE') {
+    return res.status(200).json({ success: true, filename });
   }
   res.redirect('/cultural-board/api/upload');
 };

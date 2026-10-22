@@ -464,7 +464,7 @@ We ❤️ contributions! Whether you're fixing bugs, adding features, or improvi
 
 ### Contribution Guidelines
 
-- 📖 Read our [CONTRIBUTING.md](CONTRIBUTION.md) for detailed guidelines
+- 📖 Read our [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines
 - 🐛 Report bugs via [GitHub Issues](https://github.com/swciitg/Cultural_Board_Portal/issues)
 - 💡 Suggest features via [GitHub Discussions](https://github.com/swciitg/Cultural_Board_Portal/discussions)
 - ✅ Ensure all tests pass before submitting PR
@@ -594,6 +594,6 @@ Need help? Here's how to get support:
 
 Made with ❤️ by [Student Web Committee, IIT Guwahati](https://github.com/swciitg)
 
-[Report Bug](https://github.com/swciitg/Cultural_Board_Portal/issues) • [Request Feature](https://github.com/swciitg/Cultural_Board_Portal/issues) • [Contribute](CONTRIBUTION.md)
+[Report Bug](https://github.com/swciitg/Cultural_Board_Portal/issues) • [Request Feature](https://github.com/swciitg/Cultural_Board_Portal/issues) • [Contribute](CONTRIBUTING.md)
 
 </div>

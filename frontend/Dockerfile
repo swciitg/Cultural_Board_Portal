@@ -14,7 +14,12 @@ RUN npm install
 COPY . .
 
 # Create production build of React App
+ARG REACT_APP_API_BASE_URL=http://localhost:3001
+ENV REACT_APP_API_BASE_URL=$REACT_APP_API_BASE_URL
 RUN npm run build
+
+EXPOSE 3000
+CMD ["serve", "-s", "build", "-l", "3000"]
 # RUN mkdir -p ./build/election_portal
 # RUN mv ./build/static ./build/election_portal/static
 # RUN mv ./build/manifest.json ./build/election_portal/manifest.json
